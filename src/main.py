@@ -110,7 +110,7 @@ def post_Planetfavorites():
 @app.route('/favorite/people/<id>', methods=['POST'])
 def post_Peoplefavorites():
     body = request.get_json()
-    peoplefavorites_post = Characters(Characters_id=body['Characters_id'], User_id=body['User_id'])
+    peoplefavorites_post = Characters(characters_id=body['characters_id'], user_id=body['user_id'])
     db.session.add(peoplefavorites_post)
     db.session.commit()
     return jsonify(peoplefavorites_post.serialize()), 200
@@ -118,7 +118,7 @@ def post_Peoplefavorites():
 #[DELETE] /favorite/planet/<int:planet_id> Delete favorite planet with the id = planet_id.
 
 @app.route('/favorite/planet/<Planets_id>', methods=['DELETE'])
-def post_Planetfavorites(Planets_id):
+def delete_Planetfavorites(Planets_id):
     planetsfavorites_delete = UserFavorite.query.get(Planets_id)
     db.session.delete(planetsfavorites_delete)
     db.session.commit()
@@ -126,9 +126,9 @@ def post_Planetfavorites(Planets_id):
 
 #[DELETE] /favorite/people/<int:people_id> Delete favorite people with the id = people_id.
 
-@app.route('/favorite/peoples/<Characters_id>', methods=['DELETE'])
-def delete_Peoplefavorites(Characters_id):
-    peoplefavorites_delete = UserFavorite.query.get(Characters_id)
+@app.route('/favorite/peoples/<people_id>', methods=['DELETE'])
+def delete_Peoplefavorites(people_id):
+    peoplefavorites_delete = UserFavorite.query.get(people_id)
     db.session.delete(peoplefavorites_delete)
     db.session.commit()
     return jsonify(peoplefavorites_delete.serialize()), 200

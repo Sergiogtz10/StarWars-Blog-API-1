@@ -69,7 +69,7 @@ class Userfavorite(db.Model):
     Characters_id = db.Column(db.Integer, db.ForeignKey('characters.id'))
     Planets_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
     user = db.relationship(User)
-    Character = db.relationship(Characters)
+    character = db.relationship(Characters)
     planets = db.relationship(Planets)
 
     def __repr__(self):
@@ -80,5 +80,5 @@ class Userfavorite(db.Model):
             "id": self.id,
             "User_id": self.User_id,
             "Characters_id": self.Characters_id,
-            "Planets_id": self.Planets_id,
+            "Planets_id ": self.Planets_id ,
         }
